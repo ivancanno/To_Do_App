@@ -1,0 +1,177 @@
+/* ================================
+   Variables y estilos base
+=================================== */
+:root {
+  --bg: #020617;
+  --bg-alt: #02091f;
+  --bg-soft: #0b1220;
+  --card-bg: #020617;
+  --accent: #38bdf8;
+  --accent-2: #a855f7;
+  --accent-3: #22c55e;
+  --danger: #ef4444;
+  --warning: #facc15;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border-subtle: #1e293b;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.9);
+  --transition-fast: 0.18s ease-out;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.app-body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 55%),
+    radial-gradient(circle at top right, rgba(168, 85, 247, 0.25), transparent 60%),
+    radial-gradient(circle at bottom, rgba(34, 197, 94, 0.2), transparent 55%),
+    linear-gradient(135deg, #020617, #02091f);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================================
+   Layout general
+=================================== */
+
+.app-header {
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  backdrop-filter: blur(20px);
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: radial-gradient(circle at 20% 20%, #38bdf8, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b1120;
+  font-size: 26px;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.9);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+}
+
+.app-header__subtitle {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.app-main {
+  padding: 24px min(7vw, 64px) 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 24px;
+}
+
+@media (max-width: 960px) {
+  .app-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ================================
+   Tarjetas genéricas
+=================================== */
+
+.card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: var(--shadow-soft);
+  padding: 20px 22px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card--form {
+  margin-bottom: 8px;
+}
+
+.card--filters {
+  margin-top: 8px;
+}
+
+/* ================================
+   Formulario de tareas
+=================================== */
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row--two {
+  flex-direction: row;
+  gap: 16px;
+}
+
+.form-row--two > label {
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .form-row--two {
+    flex-direction: column;
+  }
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+}

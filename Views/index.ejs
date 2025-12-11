@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestor de Tareas</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="app-body">
+  <header class="app-header">
+    <div class="app-header__logo">
+      <div class="logo-icon">
+        <span class="logo-icon__calendar">📅</span>
+        <span class="logo-icon__clock">⏰</span>
+      </div>
+      <div>
+        <h1>Gestor de Tareas</h1>
+        <p class="app-header__subtitle">
+          Organiza por nivel de importancia y fecha límite
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="card card--form">
+      <h2>Nueva tarea</h2>
+      <form action="/add" method="POST" class="task-form">
+        <div class="form-row">
+          <label>
+            Título
+            <input type="text" name="title" required />
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            Descripción
+            <textarea name="description" rows="3"></textarea>
+          </label>
+        </div>
+
+        <div class="form-row form-row--two">
+          <label>
+            Lista
+            <select name="list">
+              <option value="general">General</option>
+              <option value="work">Trabajo</option>
+            </select>
+          </label>
+
+          <label>
+            Nivel de importancia
+            <select name="priority" required>
+              <option value="1">1 - Crítico</option>
+              <option value="2">2 - Alto</option>
+              <option value="3" selected>3 - Medio</option>
+              <option value="4">4 - Bajo</option>
+              <option value="5">5 - Muy bajo</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-row form-row--two">
+          <label>
+            Fecha límite (opcional)
+            <div class="input-with-icon">
+              <span class="input-icon">📅</span>
+              <input type="date" name="deadline" />
+            </div>
+          </label>
+
+          <label>
+            Tiempo estimado (minutos, opcional)
+            <div class="input-with-icon">
+              <span class="input-icon">⏱️</span>
+              <input type="number" name="estimatedDuration" min="1" />
+            </div>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">
+            ➕ Agregar tarea
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card card--filters">
+      <h2>Ordenar tareas</h2>
+      <p class="filters-help">
+        Elige cómo quieres ver tus tareas:
+      </p>
+      <div class="chip-group">
+        <a
+          href="/?sortBy=importance"
+          class="chip <%= sortBy === 'importance' ? 'chip--active' : '' %>"
+        >
+          ⭐ Por importancia
+          <span class="chip__subtitle">
+            (prioridad de 1 = más importante)
+          </span>
+        </a>
+
+        <a
